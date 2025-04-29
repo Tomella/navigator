@@ -24,6 +24,10 @@ export default class Zoomer {
 
         this.checkZoomRange();
 
+        this.map.on("zoom", (ev) => {
+            this.checkZoomRange();
+        });
+
         this.zoomIn.addEventListener("click", (e) => {
             this.checkZoomRange(1);
         });
