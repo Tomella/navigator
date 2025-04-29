@@ -1,0 +1,18 @@
+{
+    "name": "Navigator",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "orientation": "landscape-primary",
+    "icons": [
+      {
+        "src": "/assets/512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      },
+      {
+        "src": "/assets/192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ]
+  }

@@ -1,0 +1,40 @@
+{
+    "name": "navigator",
+    "version": "0.0.1",
+    "description": "Navigation tool.",
+    "repository": "Tomella/navigator",
+    "type": "module",
+    "files": [
+        "package.json",
+        "LICENSE",
+        "README.md"
+    ],
+    "directories": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "location"
+    ],
+    "author": "Tomella",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/Tomella/navigator/issues"
+    },
+    "homepage": "http://web.geospeedster.com/navigator",
+    "dependencies": {
+        "proj4": "^2.10.0"
+    },
+    "devDependencies": {
+        "node-fetch": "^3.3.2",
+        "express": "^4.18.2",
+        "x2js": "^3.4.4",
+        "yargs": "^17.6.2"
+    },
+    "browserslist": [
+        "last 1 version",
+        "> 1%",
+        "maintained node versions",
+        "not dead"
+    ]
+}

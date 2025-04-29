@@ -1,0 +1,114 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  
+  #mapId {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  #control-container {
+    position: fixed;
+    left: 10px;
+    bottom: 20px;
+    top: 144px;
+    width: 260px;
+  }
+  
+  #control-header {
+    position: absolute;
+    top: 0;
+    width:100%;
+    height: 20px;
+  }
+  
+  #controls {
+    position: absolute;
+    bottom: 0px;
+    background-color: white;
+    border: 2px solid #cccccc;
+    background-clip: padding-box;
+    border-radius: 8px;
+    padding: 5px;
+    margin-top: 20px;
+    max-height: 100%;
+    width:100%;
+    overflow-y:auto;
+  }
+  
+  #where {
+    position: fixed;
+    right: 10px;
+    bottom: 30px;
+    z-index: 10;
+  }
+  
+  #where > a {
+    background-color: white;
+    border: 2px solid #cccccc;
+    border-radius: 4px;
+    padding: 10px;
+  }
+  
+  wai-panel {
+    position: fixed;
+    left: 30px;
+    bottom: 30px;
+  }
+  
+  wai-day-summary {
+    z-index: 90;
+    position: fixed;
+    top: 10px;
+    left: 100px;
+    opacity: 0.9;
+  }
+  
+  wai-menu {
+    z-index: 91;
+    position: fixed;
+    top: 10px;
+    left: 47px;
+    opacity: 0.8;
+  }
+  
+  .mouseposition {
+    margin: -5px;
+  }
+  
+  .leaflet-bottom {
+    margin-bottom: -7px;
+  }
+  
+  
+  /* custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: white;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+  }
+  
+  .hide {
+    display: none;
+  }
+
+  .label {
+    display: inline-block;
+    width: 6em;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Navigator</title>
+   <script>
+      const registerWorker = async () => {
+         if ('serviceWorker' in navigator) {
+            try {
+               const registration = await navigator.serviceWorker.register('./serviceworker.js', {type: 'module'});
+               console.log('Service worker registration succeeded:', registration);
+            } catch (error) {
+               console.error(`Registration failed with ${error}`);
+            }
+         }
+      };
+
+      registerWorker();
+   </script>
+   <link rel="manifest" href="manifest.json" />
+   <link rel="icon" type="image/png" href="icon.png">
+   <link rel="stylesheet" href="lib/app.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" crossorigin=""/>
+   
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+   <script src="lib/leaflethelper.js"></script>
+   <script type="module" src="components/wai-button.js"></script>
+   <script type="module" src="components/wai-compass.js"></script>
+   <script type="module" src="components/wai-number.js"></script>
+   <script type="module" src="components/wai-endpoint.js"></script>
+   <script type="module" src="components/wai-recenter.js"></script>
+   <script type="module" src="components/wai-select.js"></script>
+</head>
+
+<body>
+   <div id="mapId"></div>
+   <div style="position:fixed; left:0;top:0; width:80px;">
+      <div style="position: absolute; left: 25px; top: 30px;">
+         <wai-button id="zoomin"></wai-button>
+         <wai-button id="zoomout"></wai-button>
+      </div>
+   </div>
+   <div style="position:fixed; right:0;top:0; width:150px;">
+      <div id="endpointContainer" style="position: absolute; right: 16px; top: 10px; width: 140px; height: 60px;" class="hide">
+         <wai-endpoint id="endpoint" endlat="-34.4558551" endlng="138.8113785"></wai-endpoint>
+      </div>
+      <div style="position: absolute; right: 55px; top: 10px;">
+         <wai-select></wai-select>
+      </div>
+      <div style="position:absolute; right:60px; top:120px; width:60px; height:60px">
+         <wai-compass class="hide" id="speedCompass" direction="0"></wai-compass>
+      </div>
+      <div style="position:absolute; right:18px; top:185px; width:100%;">
+         <wai-number class="hide" id="speedValue" number="1" units="km/h" label=""></wai-number>
+      </div>
+      <div style="position:absolute; right:55px; top:220px;">
+         <wai-recenter title="Recenter and track position" class="hide"></wai-recenter>
+      </div>
+   </div>
+
+   <div id="details" style="position:fixed; right:20px; bottom:20px; font-weight: bold;">
+      <div id="messages"></div>
+   </div>
+   <div id="details" style="position:fixed; left:20px; bottom:20px; font-weight: bold;">
+      <textarea class="hide" id="dumpster" rows="10" cols="120"></textarea>
+   </div>
+</body>
+
+<script type="module" src="lib/app.js"></script>
+</html>
