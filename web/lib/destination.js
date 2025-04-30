@@ -19,13 +19,13 @@ export default class Destination {
         let lastDestination = localStorage.getItem(Destination.KEY);
         if(lastDestination) {
             try {
-                this.latLng = JSON.parse(lastDestination);
-                return; 
+                let {lat, lng} = JSON.parse(lastDestination)
+                this.latLng = {lat, lng};
             } catch(e) {
+                this.latLng = null;
                 localStorage.removeItem(Destination.KEY);
             };
         }
-        this.latLng = null;
     }
 
     set(latLng) {

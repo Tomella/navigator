@@ -26,6 +26,8 @@ export default class BreadCrumb {
     // The time has to be greater than a threshold.
     // The distamce travelled has to greater than some lower limit.
     add(geolocation) {
+        const RADIUS = 12;
+        const TRiANGLE_SIZE = RADIUS - 5;
         try {
             let coords = geolocation.coords;
             let lat = coords.latitude;
@@ -88,10 +90,24 @@ export default class BreadCrumb {
             }
 
             if(!this.marker) {
-                this.marker = L.circleMarker(latLng, {radius: 6}).addTo(map);
+                this.marker = L.circleMarker(latLng, {color:"black", fillColor: "blue", radius: RADIUS}).addTo(map);
             } else {
                 this.marker.setLatLng(latLng);
             }
+
+            if(this.pointer) {
+                this.pointer.remove();
+                this.pointer = null;
+            }
+
+            let bearing = coords.heading;
+            if(bearing !== null) {
+                let p1 = destinationPoint(latLng, TRiANGLE_SIZE, this.map.getZoom(), bearing);
+                let p2 = destinationPoint(latLng, TRiANGLE_SIZE, this.map.getZoom(), bearing + 210);
+                let p3 = destinationPoint(latLng, TRiANGLE_SIZE, this.map.getZoom(), bearing + 150);
+                this.pointer = L.polygon([p1, p2, p3, p1], {color: "black"}).addTo(map);
+            }
+
 
             function updateStorage(context) {
                 console.log("Updating storage");
@@ -107,4 +123,34 @@ export default class BreadCrumb {
     all() {
         return this.trail.map(location => [location.coords.latitude, location.coords.longitude]);
     }
+}
+
+Math.toRadians = function(degrees) {
+  return degrees * Math.PI / 180;
+}
+
+Math.toDegrees = function(radians) {
+  return radians * 180 / Math.PI;
+}
+
+const LOOKUP = [32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1, 0.5, 0.25, 0.125, 0.0625, 0.03125, 0.015625];
+function destinationPoint(origin, delta, zoom, bearing) {
+  
+  const distance = delta * 2 ** (17 - zoom);
+  const radius = 6371e3;
+  const Ad = distance / radius;
+  const br = Math.toRadians(bearing);
+
+  const lat1 = Math.toRadians(origin.lat), lon1 = Math.toRadians(origin.lng);
+
+  const sinlat2 = Math.sin(lat1) * Math.cos(Ad) + Math.cos(lat1) * Math.sin(Ad) * Math.cos(br);
+  const lat2 = Math.asin(sinlat2);
+  const y = Math.sin(br) * Math.sin(Ad) * Math.cos(lat1);
+  const x = Math.cos(Ad) - Math.sin(lat1) * sinlat2;
+  const lon2 = lon1 + Math.atan2(y, x);
+
+  const lat = Math.toDegrees(lat2);
+  const lng = Math.toDegrees(lon2);
+
+  return {lat, lng};
 }

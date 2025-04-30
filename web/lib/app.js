@@ -4,12 +4,10 @@ import BreadCrumb from "./breadcrumb.js";
 import Destination from "./destination.js";
 import Zoomer from "./zoomer.js";
 
-
 const MS_TO_KMH = 3.6
 const x = document.getElementById("messages");
 const formatter = new Intl.NumberFormat("en-AU", { maximumFractionDigits: 4 });
 const geoOptions = config.geolocationOptions;
-
 
 let params = new URLSearchParams(document.location.search.substring(1));
 let dev = params.get("dev");

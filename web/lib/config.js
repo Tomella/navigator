@@ -93,7 +93,7 @@ export default {
      </svg>
      `,
  
-    geolocationOverrideTimeout: 10000,
+    geolocationOverrideTimeout: 5000,
     geolocationOptions: {
        enableHighAccuracy: true,
        timeout: 5000,
@@ -101,9 +101,9 @@ export default {
     },
  
     breadcrumb: {
-       accuracy: 1200,  // metres
-       minimumPeriod: 10000, // 10 seconds
-       minimumTravel: 10,  // metres.
+       accuracy: 1400,  // metres
+       minimumPeriod: 8000, // 10 seconds
+       minimumTravel: 8,  // metres.
        storage: true,  // Use localstorage for breadcrumb to preserve across refreshes.
        lineStyle: {    // The breadcrumb line on map's styling info.
           color: 'red',

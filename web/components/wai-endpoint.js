@@ -12,7 +12,7 @@ wai-number {
 </style>
 <div id="target" class="hide">
     <wai-compass id="distCompass" direction="0"></wai-compass>
-    <wai-number id="distance"  units="km" label="Distance:"></wai-number>
+    <wai-number id="distance"  units="km" label=""></wai-number>
 </div>
 `;
 

@@ -5,6 +5,9 @@ const template = document.createElement('template');
 
 template.innerHTML = `
 <style> 
+    div {
+        font-size: 120%;
+    }
     .hide {
         display: none;
     }
