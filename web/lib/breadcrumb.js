@@ -20,7 +20,6 @@ export default class BreadCrumb {
         this.trail = [];
     }
 
-
     // Make up some arbitrary rules about which to keep. All driven from the config.
     // The distance has to be greater than the accuracy.
     // The time has to be greater than a threshold.
@@ -95,6 +94,15 @@ export default class BreadCrumb {
                 this.marker.setLatLng(latLng);
             }
 
+            // What about a temporary line between current position and last breadcrumb?
+            if(this.link) {
+                this.link.remove();
+            }
+            let lastBread = this.trail.at(-1).coords; 
+            if(lastBread.latitude != lat || lastBread.longitude != lng) {
+                this.link = L.polyline([[lat, lng], [lastBread.latitude, lastBread.longitude]], this.config.lineStyle).addTo(map);
+            }
+
             if(this.pointer) {
                 this.pointer.remove();
                 this.pointer = null;
@@ -108,7 +116,6 @@ export default class BreadCrumb {
                 this.pointer = L.polygon([p1, p2, p3, p1], {color: "black"}).addTo(map);
             }
 
-
             function updateStorage(context) {
                 console.log("Updating storage");
                 if (context.config.storage) {
@@ -118,6 +125,28 @@ export default class BreadCrumb {
         } catch (e) {
             console.log(e)
         }
+    }
+
+    toGeoJSON() {
+        return {
+            type: "FeatureCollection",
+            name: "points",
+            features: this.trail.map(point => {
+                let coords = point.coords;
+                return {
+                    type: "Feature",
+                    properties: {
+                        timestamp: point.timestamp,
+                        gps_elevation: coords.altitude,
+                        accuracy: coords.accuracy
+                    },
+                    geometry: {
+                        type: "Point",
+                        coordinates: [coords.longitude, coords.latitude]                        
+                    }
+                }
+            })
+        };
     }
 
     all() {
@@ -133,10 +162,8 @@ Math.toDegrees = function(radians) {
   return radians * 180 / Math.PI;
 }
 
-const LOOKUP = [32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1, 0.5, 0.25, 0.125, 0.0625, 0.03125, 0.015625];
-function destinationPoint(origin, delta, zoom, bearing) {
-  
-  const distance = delta * 2 ** (17 - zoom);
+function destinationPoint(origin, delta, zoom, bearing) {  
+  const distance = delta * 2 ** (17 - zoom); // Normalise to zoom and circle radius (arbitrarily)
   const radius = 6371e3;
   const Ad = distance / radius;
   const br = Math.toRadians(bearing);
