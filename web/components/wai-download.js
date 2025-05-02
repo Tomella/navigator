@@ -12,7 +12,7 @@ const ICON = `
 
 const template = document.createElement('template');
 template.innerHTML = `
-<div style="position:fixed; right:10px; bottom:60px; cursor: pointer" title="Download breadcrumb line as GeoJSON">
+<div style="position:fixed; right:0px; bottom:60px; cursor: pointer" title="Download breadcrumb line as GeoJSON">
     <wai-button id="downloader"></wai-button>
     <a download="breadcrumb.geojson" id="downloaderTarget" style="display: none"></a>
 </div>

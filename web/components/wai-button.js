@@ -4,7 +4,7 @@ template.innerHTML = `
     div {
         width: 80px;
         height: 80px;
-        padding: 20px;
+        padding: 10px;
         cursor: pointer;
     }
 

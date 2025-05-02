@@ -35,29 +35,29 @@
 <body>
    <div id="mapId"></div>
    <div style="position:fixed; left:0;top:0; width:80px;">
-      <div style="position: absolute; left: 20px; top: 20px;">
+      <div style="position: absolute; left: 10px; top: 20px;">
          <wai-button id="zoomin"></wai-button>
          <wai-button id="zoomout"></wai-button>
       </div>
    </div>
    <div style="position:fixed; right:0;top:0; width:150px;">
-      <div id="endpointContainer" style="position: absolute; right: 16px; top: 15px; width: 140px; height: 60px;" class="hide">
+      <div id="endpointContainer" style="position: absolute; right: 5px; top: 15px; width: 130px; height: 55px;" class="hide">
          <wai-endpoint id="endpoint" endlat="-34.4558551" endlng="138.8113785"></wai-endpoint>
       </div>
-      <div style="position: absolute; right: 45px; top: 10px;">
+      <div style="position: absolute; right: 25px; top: 10px;">
          <wai-select></wai-select>
       </div>
-      <div style="position:absolute; right:60px; top:120px; width:60px; height:60px">
+      <div style="position:absolute; right:35px; top:120px; width:60px; height:60px">
          <wai-compass class="hide" id="speedCompass" direction="0"></wai-compass>
       </div>
-      <div style="position:absolute; right:18px; top:185px; width:100%;">
+      <div style="position:absolute; right:10px; top:185px; width:100%;">
          <wai-number class="hide" id="speedValue" number="1" units="km/h" label=""></wai-number>
       </div>
-      <div style="position:absolute; right:45px; top:220px;">
+      <div style="position:absolute; right:35px; top:220px;">
          <wai-recenter title="Recenter and track position" class="hide"></wai-recenter>
       </div>
    </div>
-   <wai-download style="position:fixed; right:10px; bottom:60px;" title="Download breadcrumb line as GeoJSON"></wai-download>
+   <wai-download style="position:fixed; right:0px; bottom:60px;" title="Download breadcrumb line as GeoJSON"></wai-download>
    <div id="details" style="position:fixed; right:20px; bottom:20px; font-weight: bold;">
       <div id="messages"></div>
    </div>
