@@ -29,11 +29,8 @@ export default {
       zoomoutId: "zoomout",
       zoomLevels: [5, 7, 10, 13, 16, 18],
       zoominContent: `
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg height="64px" width="64px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+<svg height="64px" width="64px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 viewBox="0 0 450.217 450.217" xml:space="preserve">
-<g>
 	<g>
 		<g>
          <circle cx="170" cy="170" r="120" fill="#ffffff"/>
@@ -53,17 +50,12 @@ export default {
 				S211.425,144.258,207.475,144.258z"/>
 		</g>
 	</g>
-</g>
 </svg>
     `,
       zoomoutContent: `
-  <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+<svg fill="#000000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 width="64px" height="64px" viewBox="0 0 349.792 349.792"
 	 xml:space="preserve">
-<g>
 	<g>
 		<g>
          <circle cx="125" cy="125" r="90" fill="#ffffff"/>
@@ -81,10 +73,8 @@ export default {
 				c2.87,0,5.176-2.318,5.176-5.176C160.574,114.776,158.268,112.461,155.397,112.461z"/>
 		</g>
 	</g>
-</g>
 </svg>  
-    
-    `,
+      `,
     },
 
     destinationIcon: `<svg width="70px" height="70px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

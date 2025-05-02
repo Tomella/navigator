@@ -16,7 +16,7 @@ svg {
 }
 </style>
 <svg xmlns="http://www.w3.org/2000/svg" class="rotate" width="560px" height="560px" viewBox="0 0 560 560">
-     <path stroke-width="35" fill="#FFF" stroke="#000" d="M280,40L522,525L280,420L38,525z"/>
+     <path stroke-width="45" fill="#FFF" stroke="#000" d="M280,40L522,525L280,420L38,525z"/>
 </svg>
 `;
 

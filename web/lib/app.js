@@ -2,6 +2,7 @@ import Map from "./map.js";
 import config from "./config.js";
 import BreadCrumb from "./breadcrumb.js";
 import Destination from "./destination.js";
+import Downloader from "./downloader.js";
 import Zoomer from "./zoomer.js";
 
 const MS_TO_KMH = 3.6
@@ -20,7 +21,6 @@ if (dev) {
     }
 }
 
-
 let mapManager = new Map(config.map);
 mapManager.create();
 let map = mapManager.map;
@@ -28,34 +28,14 @@ let map = mapManager.map;
 config.zoomer.map = map;
 let zoomer = new Zoomer(config.zoomer);
 
-let count = 0;
 let watchId = null;
 let lastWatch = 0;
-
-let pinger = () => {
-    setTimeout(pinger, 5000); // Check every 5 seconds. It's only the ping time
-    let now = Date.now();
-    if (now - lastWatch > config.geolocationOverrideTimeout) {
-        if (watchId) {
-            navigator.geolocation.clearWatch(watchId);
-        }
-        getLocation();
-    }
-}
-pinger();
-
-function getLocation() {
-    lastWatch = Date.now();
-    if (navigator.geolocation) {
-        watchId = navigator.geolocation.watchPosition(showPosition, showError, geoOptions);
-    } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
+let panned = false;
 
 let breadcrumb = new BreadCrumb(map, config.breadcrumb);
-window.breadcrumb = breadcrumb;
 let watchCount = 0;
+
+let downloader = new Downloader(breadcrumb);
 
 function showPosition(position) {
     /*
@@ -149,11 +129,9 @@ function pointSelected(latlng) {
     }
 }
 
-
 // Recentering code 
 let waiRecenter = document.querySelector("wai-recenter");
 waiRecenter.classList.add("hide");
-let panned = false;
 let lastLatLng = null;
 function updatePosition(lat, lng) {
     // Update the pointer to the destination.
@@ -169,6 +147,27 @@ function updatePosition(lat, lng) {
     }
 }
 
+let pinger = () => {
+    setTimeout(pinger, 5000); // Check every 5 seconds. It's only the ping time
+    let now = Date.now();
+    if (now - lastWatch > config.geolocationOverrideTimeout) {
+        if (watchId) {
+            navigator.geolocation.clearWatch(watchId);
+        }
+        getLocation();
+    }
+}
+pinger();
+
+function getLocation() {
+    lastWatch = Date.now();
+    if (navigator.geolocation) {
+        watchId = navigator.geolocation.watchPosition(showPosition, showError, geoOptions);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
 waiRecenter.addEventListener("recenter", async (e) => {
     panned = false;
     map.setView(lastLatLng);
@@ -180,7 +179,6 @@ map.on("dragend", () => {
     console.log("drag end...");
     panned = true;
 });
-
 
 function showSpeed(speed, heading) {
     let compass = document.getElementById("speedCompass");

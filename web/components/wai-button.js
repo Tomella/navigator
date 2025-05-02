@@ -21,7 +21,7 @@ customElements.define('wai-button', class WaiButton extends HTMLElement {
     static get observedAttributes() { return ['content', 'disabled']; }
 
     $(selector) {
-        return this.shadowRoot && this.shadowRoot.querySelector(selector)
+        return this.shadowRoot && this.shadowRoot.querySelector(selector);
     }
 
     constructor() {

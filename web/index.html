@@ -25,6 +25,7 @@
    <script src="lib/leaflethelper.js"></script>
    <script type="module" src="components/wai-button.js"></script>
    <script type="module" src="components/wai-compass.js"></script>
+   <script type="module" src="components/wai-download.js"></script>
    <script type="module" src="components/wai-number.js"></script>
    <script type="module" src="components/wai-endpoint.js"></script>
    <script type="module" src="components/wai-recenter.js"></script>
@@ -43,7 +44,7 @@
       <div id="endpointContainer" style="position: absolute; right: 16px; top: 15px; width: 140px; height: 60px;" class="hide">
          <wai-endpoint id="endpoint" endlat="-34.4558551" endlng="138.8113785"></wai-endpoint>
       </div>
-      <div style="position: absolute; right: 55px; top: 10px;">
+      <div style="position: absolute; right: 45px; top: 10px;">
          <wai-select></wai-select>
       </div>
       <div style="position:absolute; right:60px; top:120px; width:60px; height:60px">
@@ -52,11 +53,11 @@
       <div style="position:absolute; right:18px; top:185px; width:100%;">
          <wai-number class="hide" id="speedValue" number="1" units="km/h" label=""></wai-number>
       </div>
-      <div style="position:absolute; right:55px; top:220px;">
+      <div style="position:absolute; right:45px; top:220px;">
          <wai-recenter title="Recenter and track position" class="hide"></wai-recenter>
       </div>
    </div>
-
+   <wai-download style="position:fixed; right:10px; bottom:60px;" title="Download breadcrumb line as GeoJSON"></wai-download>
    <div id="details" style="position:fixed; right:20px; bottom:20px; font-weight: bold;">
       <div id="messages"></div>
    </div>

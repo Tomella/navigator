@@ -5,6 +5,7 @@ template.innerHTML = `
 wai-number {
     position: absolute;
     top: 68px;
+    width:100%;
 }
 .hide {
     display: none;
@@ -70,8 +71,7 @@ customElements.define('wai-endpoint', class WaiEndpoint extends HTMLElement {
         }
 
     }
-
-
+    
     connectedCallback() {
         //this.shadowRoot.addEventListener('jobexpand', (e) => console.log(e));
     }
