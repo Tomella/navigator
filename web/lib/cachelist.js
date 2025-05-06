@@ -16,6 +16,7 @@ export var cacheList = [
     "/lib/cachelist.js",
     "/lib/config.js",
     "/lib/destination.js",
+    "/lib/downloader.js",
     "/lib/eventer.js",
     "/lib/leaflethelper.js",
     "/lib/map.js",
