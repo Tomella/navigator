@@ -10,6 +10,7 @@ export var cacheList = [
     "/components/wai-number.js",
     "/components/wai-recenter.js",
     "/components/wai-select.js",
+    "/lib/antilock.css",
     "/lib/app.css",
     "/lib/app.js",
     "/lib/breadcrumb.js",
