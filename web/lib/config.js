@@ -92,7 +92,7 @@ export default {
  
     breadcrumb: {
        accuracy: 1400,  // metres
-       minimumPeriod: 8000, // 10 seconds
+       minimumPeriod: 5000, // 10 seconds
        minimumTravel: 8,  // metres.
        storage: true,  // Use localstorage for breadcrumb to preserve across refreshes.
        lineStyle: {    // The breadcrumb line on map's styling info.

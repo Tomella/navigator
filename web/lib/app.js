@@ -1,9 +1,13 @@
 import Map from "./map.js";
+import AntiLock from "./antilock.js";
 import config from "./config.js";
 import BreadCrumb from "./breadcrumb.js";
 import Destination from "./destination.js";
 import Downloader from "./downloader.js";
 import Zoomer from "./zoomer.js";
+
+const antilock = new AntiLock();
+antilock.enable = true;
 
 const MS_TO_KMH = 3.6
 const x = document.getElementById("messages");
@@ -147,12 +151,13 @@ function updatePosition(lat, lng) {
     }
 }
 
+let geolocation = navigator.geolocation;
 let pinger = () => {
     setTimeout(pinger, 5000); // Check every 5 seconds. It's only the ping time
     let now = Date.now();
     if (now - lastWatch > config.geolocationOverrideTimeout) {
         if (watchId) {
-            navigator.geolocation.clearWatch(watchId);
+            geolocation.clearWatch(watchId);
         }
         getLocation();
     }
@@ -161,8 +166,8 @@ pinger();
 
 function getLocation() {
     lastWatch = Date.now();
-    if (navigator.geolocation) {
-        watchId = navigator.geolocation.watchPosition(showPosition, showError, geoOptions);
+    if (geolocation) {
+        watchId = geolocation.watchPosition(showPosition, showError, geoOptions);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
