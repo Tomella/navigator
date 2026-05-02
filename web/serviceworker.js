@@ -1,4 +1,4 @@
-const version = 'v3'
+const version = 'v4';
 import {cacheList} from "./lib/cachelist.js";
 
 const addResourcesToCache = async (resources) => {
