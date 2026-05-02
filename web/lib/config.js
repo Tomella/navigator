@@ -7,11 +7,7 @@ export default {
           center: [-24, 132],
           minZoom: 5,
           zoom: 5,
-          maxZoom: 18,
-          maxBounds: [
-             [-6, 110],
-             [-46, 160]
-          ]
+          maxZoom: 18
        },
        layers: [
           {
